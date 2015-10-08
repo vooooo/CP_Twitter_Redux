@@ -10,6 +10,15 @@ import UIKit
 
 class ProfileHeaderCell: UITableViewCell {
     
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screennameLabel: UILabel!
+        
+    @IBOutlet weak var profileTweetsLabel: UILabel!
+    @IBOutlet weak var profileFollowingLabel: UILabel!
+    @IBOutlet weak var profileFollowersLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

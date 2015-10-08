@@ -37,6 +37,7 @@
 		97BC17531BBF2A71001415D7 /* TweetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC17521BBF2A71001415D7 /* TweetDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		97BC17551BBF5F1B001415D7 /* TweetComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC17541BBF5F1B001415D7 /* TweetComposeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		97CAB8FF1BBBB4BD00F83A86 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CAB8FE1BBBB4BD00F83A86 /* TwitterClient.swift */; settings = {ASSET_TAGS = (); }; };
+		97E255741BC5B5F9005A7F12 /* UserTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E255731BC5B5F9005A7F12 /* UserTweetCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		97BC17541BBF5F1B001415D7 /* TweetComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetComposeViewController.swift; sourceTree = "<group>"; };
 		97CAB8FA1BBBB43000F83A86 /* Twitter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Twitter-Bridging-Header.h"; sourceTree = "<group>"; };
 		97CAB8FE1BBBB4BD00F83A86 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		97E255731BC5B5F9005A7F12 /* UserTweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTweetCell.swift; sourceTree = "<group>"; };
 		C087BBF857D7E4B78CEE6377 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F75AB3BD853A8B9785132558 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				978C343F1BBCAA5600EB4574 /* TweetCell.swift */,
+				97E255731BC5B5F9005A7F12 /* UserTweetCell.swift */,
 				97069E991BC4E39F000B1729 /* ProfileHeaderCell.swift */,
 				97069E9B1BC4E9BC000B1729 /* MenuCell.swift */,
 			);
@@ -326,6 +329,7 @@
 				97BC17551BBF5F1B001415D7 /* TweetComposeViewController.swift in Sources */,
 				9729D9C21BBC3AA200F71B7E /* Tweet.swift in Sources */,
 				97069E961BC4E350000B1729 /* MenuViewController.swift in Sources */,
+				97E255741BC5B5F9005A7F12 /* UserTweetCell.swift in Sources */,
 				9729D9C41BBC88A100F71B7E /* TweetsViewController.swift in Sources */,
 				97069E9A1BC4E39F000B1729 /* ProfileHeaderCell.swift in Sources */,
 				97069E981BC4E363000B1729 /* ProfileViewController.swift in Sources */,

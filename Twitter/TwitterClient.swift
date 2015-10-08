@@ -43,7 +43,8 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/home_timeline.json", parameters: params,
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                print("home_timeline: \(response)")
+//                print("home_timeline: \(response)")
+                print("home_timeline")
                 
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
                 completion(tweets: tweets, error: nil)
@@ -54,7 +55,37 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 completion(tweets: nil, error: error)
         })
     }
-    
+    func mentionsTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/mentions_timeline.json", parameters: params,
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                print("mentions_timeline")
+                
+                let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                completion(tweets: tweets, error: nil)
+                
+            },
+            failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                print("Error getting mentions timeline")
+                completion(tweets: nil, error: error)
+        })
+    }
+
+    func userTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/user_timeline.json", parameters: params,
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+//                print("user_timeline: \(response)")
+                print("user_timeline")
+                
+                let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                completion(tweets: tweets, error: nil)
+                
+            },
+            failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                print("Error getting user timeline")
+                completion(tweets: nil, error: error)
+        })
+    }
+
     func favoritesCreate(id: String, completion: (tweet: Tweet?, error: NSError?) -> ()) {
         
         let url = "1.1/favorites/create.json?id=\(id)"
@@ -121,6 +152,8 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                         print("user: \(user.name)")
                         User.currentUser = user
                         self.loginCompletion?(user: user, error: nil)
+                        NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
+
                     },
                     failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         print("Error verifying credentials: \(error)")

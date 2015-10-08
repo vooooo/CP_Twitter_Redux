@@ -19,9 +19,13 @@ class User: NSObject {
     var profileImageUrl: String?
     var tagline: String?
     var tweettext: String?
+//    var coverImageUrl: String?
+    
     var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
+//        print("User: \(dictionary)")
+        
         self.dictionary = dictionary
         
         name = dictionary["name"] as? String
@@ -29,6 +33,7 @@ class User: NSObject {
         profileImageUrl = dictionary["profile_image_url_https"] as? String
         tagline = dictionary["description"] as? String
         tweettext = dictionary["text"] as? String
+//        coverImageUrl = dictionary["profile_banner_url"] as? String
     }
     
     func logout() {

@@ -17,29 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
-        
-        if User.currentUser != nil {
-//            print("Current user detected \(User.currentUser?.name)")
-
-            let hamburgerViewController = storyboard.instantiateViewControllerWithIdentifier("HamburgerViewController") as! HamburgerViewController
-            window?.rootViewController  = hamburgerViewController
-                
-            let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
-
-            menuViewController.hamburgerViewController = hamburgerViewController
-            hamburgerViewController.menuViewController = menuViewController
-
-            
-        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogin", name: userDidLoginNotification, object: nil)
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 0x40/255, green: 0x99/255, blue: 0xff/255, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        
 
         return true
     }
     
+    func userDidLogin() {
+        print("User did login")
+        
+    }
+
     func userDidLogout() {
         let vc = storyboard.instantiateInitialViewController()
         window?.rootViewController = vc
@@ -61,6 +52,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if User.currentUser != nil {
+            print("Current user detected \(User.currentUser?.name)")
+            let hamburgerViewController = storyboard.instantiateViewControllerWithIdentifier("HamburgerViewController") as! HamburgerViewController
+            
+            let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+            
+            window?.rootViewController  = hamburgerViewController
+            
+            menuViewController.hamburgerViewController = hamburgerViewController
+            hamburgerViewController.menuViewController = menuViewController
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {

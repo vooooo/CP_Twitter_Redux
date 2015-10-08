@@ -13,11 +13,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tweets: [Tweet]?
     var refreshControl: UIRefreshControl!
     var composeType: String?
+    var menuTitle = "Tweets"
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onLogout(sender: AnyObject) {
-        User.currentUser?.logout()
+//        User.currentUser?.logout()
+        print("Logout button tapped")
     }
     
     @IBAction func onNew(sender: AnyObject) {
@@ -28,7 +30,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -45,17 +47,34 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     override func viewWillAppear(animated: Bool) {
-        navigationItem.title = "Home"
+        if menuTitle == "Mentions" {
+            navigationItem.title = "Mentions"
+        } else {
+            navigationItem.title = "Home"
+        }
     }
     
     func loadTweets() {
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
-            if error == nil {
-                self.tweets = tweets
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
-            } else {
-                print("ERROR: \(error)")
+        if menuTitle == "Mentions" {
+            TwitterClient.sharedInstance.mentionsTimelineWithParams(nil) { (tweets, error) -> () in
+                if error == nil {
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                } else {
+                    print("ERROR: \(error)")
+                }
+            }
+
+        } else {
+            TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
+                if error == nil {
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                } else {
+                    print("ERROR: \(error)")
+                }
             }
         }
     }
@@ -124,6 +143,21 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 vc.tweet = tweet
             }
+        }
+        if segue.identifier == "profileView" {
+            let vc = segue.destinationViewController as! ProfileViewController
+            if sender != nil {
+                let cell = sender as! UITableViewCell
+                let indexPath = tableView.indexPathForCell(cell)
+                
+                let tweet: Tweet
+                tweet = tweets![indexPath!.row]
+                let user = tweet.user
+                
+                vc.user = user
+            }
+
+            
         }
     
     }
