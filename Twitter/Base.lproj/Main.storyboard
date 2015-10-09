@@ -75,13 +75,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="226"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuB-I8-m2h" userLabel="Cover Image">
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuB-I8-m2h" userLabel="Cover Image">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="155" id="4HC-2R-M64"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vam-Zz-GUA">
+                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vam-Zz-GUA">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -208,6 +208,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="coverImageView" destination="IuB-I8-m2h" id="pz7-ht-EnC"/>
+                                            <outlet property="coverOpacityView" destination="vam-Zz-GUA" id="BYK-be-wrg"/>
                                             <outlet property="nameLabel" destination="QHG-cj-OuJ" id="EHt-ir-5sN"/>
                                             <outlet property="profileFollowersLabel" destination="k8k-c0-M12" id="VV2-E2-qeO"/>
                                             <outlet property="profileFollowingLabel" destination="d4W-vc-e3z" id="eqw-vF-9Qg"/>

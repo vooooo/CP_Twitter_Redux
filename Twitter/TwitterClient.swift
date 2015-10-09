@@ -17,6 +17,10 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     
     static let sharedInstance = TwitterClient(baseURL: twitterBaseURL, consumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
     
+    //
+    //
+    //  Twitter API for update status, tweet
+    //
     func tweetStatus(tweet: String, in_reply_to_status_id: String, completion: (tweet: Tweet?, error: NSError?) -> ()) {
         let escapedTweet = tweet.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         var url = "1.1/statuses/update.json?status=\(escapedTweet!)"
@@ -40,10 +44,14 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
 
+    //
+    //
+    //  Twitter API for home timeline
+    //
     func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/home_timeline.json", parameters: params,
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-//                print("home_timeline: \(response)")
+                //print("home_timeline: \(response)")
                 print("home_timeline")
                 
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
@@ -55,6 +63,11 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 completion(tweets: nil, error: error)
         })
     }
+    
+    //
+    //
+    //  Twitter API for mentions timeline
+    //
     func mentionsTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/mentions_timeline.json", parameters: params,
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
@@ -70,10 +83,14 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
 
+    //
+    //
+    //  Twitter API for user timeline
+    //
     func userTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/user_timeline.json", parameters: params,
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-//                print("user_timeline: \(response)")
+                //print("user_timeline: \(response)")
                 print("user_timeline")
                 
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
@@ -86,6 +103,10 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
 
+    //
+    //
+    //  Twitter API for to favorite a tweet
+    //
     func favoritesCreate(id: String, completion: (tweet: Tweet?, error: NSError?) -> ()) {
         
         let url = "1.1/favorites/create.json?id=\(id)"
@@ -103,6 +124,10 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
+    //
+    //
+    //  Twitter API for retweet a tweet
+    //
     func retweetWithId(id: String, completion: (tweet: Tweet?, error: NSError?) -> ()) {
         
         let url = "1.1/statuses/retweet/\(id).json"
@@ -120,6 +145,10 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
 
+    //
+    //
+    //  Twitter API for login and get request token
+    //
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
         
@@ -136,6 +165,10 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             })
     }
     
+    //
+    //
+    //  Twitter API for fetch access tokens
+    //
     func openURL(url: NSURL) {
         
         fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query),

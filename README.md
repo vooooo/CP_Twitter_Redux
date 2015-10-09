@@ -1,6 +1,6 @@
 ## Twitter Redux
 
-Time spent: 2
+Time spent: 16
 
 ### Features
 
@@ -21,7 +21,12 @@ Time spent: 2
 - [ ] Profile Page
    - [ ] Optional: Implement the paging view for the user description.
    - [ ] Optional: As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
-   - [ ] Optional: Pulling down the profile page should blur and resize the header image.
+   - [x] Optional: Pulling down the profile page should blur and resize the header image.
+      - Pull to refresh on profile page will
+         - Lower Opacity on coverimage
+	 - Zoom in on coverimage
+	 - Perform a blur on the coverimage (Tested on phone, which is fast.  Slow in the simulator)
+	 - Zoom and profile image
 - [ ] Optional: Account switching
    - [ ] Long press on tab bar to bring up Account view with animation
    - [ ] Tap account to switch to

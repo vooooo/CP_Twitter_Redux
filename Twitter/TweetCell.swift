@@ -7,6 +7,10 @@
 //
 
 import UIKit
+
+//
+// Delegate to handle reply and profile tap
+//
 @objc protocol TweetCellDelegate {
     optional func tweetCell(tweetCell: TweetCell, tweetAction value: String)
 }
@@ -73,6 +77,9 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         profileImageView.layer.cornerRadius = 3
 
+        //
+        // Setup gesture recognizer on profile image
+        //
         let singleTap = UITapGestureRecognizer(target: self, action: Selector("onProfileTap"))
         singleTap.numberOfTapsRequired = 1
         
@@ -80,10 +87,18 @@ class TweetCell: UITableViewCell {
         profileImageView.addGestureRecognizer(singleTap)
     }
     
+    //
+    //
+    //  Detect tap on profile image and call delegate, which will segue to profile view
+    //
     func onProfileTap() {
         tweetActionClicked("ProfileTap")
     }
 
+    //
+    //
+    //  Method that calls delegate
+    //
     func tweetActionClicked(action: String) {
         delegate?.tweetCell!(self, tweetAction: action)
     }

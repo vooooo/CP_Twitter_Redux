@@ -8,6 +8,8 @@
 
 import UIKit
 
+let userDidDistortProfileNotification = "userDidDistortProfileNotification"
+
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserTweetCellDelegate {
 
     @IBAction func onNew(sender: UIBarButtonItem) {
@@ -19,6 +21,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var user: User?
     var composeType: String?
     var menuTitle: String?
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +35,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if user == nil {
             user = User.currentUser
         }
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "distortProfile", forControlEvents: UIControlEvents.ValueChanged)
         
+        let dummyTableVC = UITableViewController()
+        dummyTableVC.tableView = tableView
+        dummyTableVC.refreshControl = refreshControl
+
         loadTweets()
+    }
+    
+    func distortProfile() {
+        NSNotificationCenter.defaultCenter().postNotificationName(userDidDistortProfileNotification, object: nil)
+        self.refreshControl.endRefreshing()
     }
     
     func loadTweets() {
@@ -54,6 +68,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
