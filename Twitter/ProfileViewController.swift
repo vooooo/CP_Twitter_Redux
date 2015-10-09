@@ -54,41 +54,53 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tweets != nil {
-            return tweets!.count
-        } else {
-            return 1
-            
+        var rowcount = 0
+        
+        if section == 0 {
+            rowcount = 1
+        } else if section == 1 {
+            if tweets != nil {
+                rowcount = tweets!.count
+            } else {
+                rowcount = 0
+            }
         }
+        
+        return rowcount
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            let pcell = tableView.dequeueReusableCellWithIdentifier("ProfileHeaderCell", forIndexPath: indexPath) as! ProfileHeaderCell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("ProfileHeaderCell", forIndexPath: indexPath) as! ProfileHeaderCell
             
-            pcell.nameLabel.text = user?.name
-            pcell.screennameLabel.text = user?.screenname
-            pcell.profileImageView.setImageWithURL(NSURL(string: (user?.profileImageUrl!)!))
+            cell.nameLabel.text = user?.name
+            cell.screennameLabel.text = user?.screenname
+            cell.profileImageView.setImageWithURL(NSURL(string: (user?.profileImageUrl!)!))
             
             let coverimage = user?.dictionary["profile_banner_url"] as? String
             if coverimage != nil {
-                pcell.coverImageView.setImageWithURL(NSURL(string: coverimage!))
+                cell.coverImageView.setImageWithURL(NSURL(string: coverimage!))
             }
             
             let tweets : Int = user?.dictionary["statuses_count"] as! Int
-            pcell.profileTweetsLabel.text = String(tweets)
+            cell.profileTweetsLabel.text = String(tweets)
 
             let followers : Int = user?.dictionary["followers_count"] as! Int
-            pcell.profileFollowersLabel.text = String(followers)
+            cell.profileFollowersLabel.text = String(followers)
 
             
             let following : Int = user?.dictionary["friends_count"] as! Int
-            pcell.profileFollowingLabel.text = String(following)
+            cell.profileFollowingLabel.text = String(following)
+            
+            return cell
 
-            return pcell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("UserTweetCell", forIndexPath: indexPath) as! UserTweetCell
             
@@ -96,9 +108,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.delegate = self
 
             return cell
-
-            
         }
+        
     }
     
     func tweetCell(tweetCell: TweetCell, tweetAction value: String) {

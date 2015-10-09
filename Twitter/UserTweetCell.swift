@@ -23,6 +23,9 @@ class UserTweetCell: UITableViewCell {
     @IBOutlet weak var onRetweetButton: UIButton!
     @IBOutlet weak var onFavoriteButton: UIButton!
     
+    @IBOutlet weak var retweetLabel: UILabel!
+    @IBOutlet weak var favoriteLabel: UILabel!
+    
     @IBAction func onReply(sender: UIButton) {
         print("onReply")
     }
@@ -54,7 +57,9 @@ class UserTweetCell: UITableViewCell {
             screennameLabel.text = "@\(tweet.user!.screenname!)"
             tweetLabel.text = tweet.text
             createdAtLabel.text = tweet.createdAtAgo
-            
+            retweetLabel.text = tweet.retweets!
+            favoriteLabel.text = tweet.favorites!
+
             if (tweet.favorited == true) {
                 onFavoriteButton.setImage(UIImage(named: "favorite_on.png"), forState: UIControlState.Normal)
             }
@@ -73,6 +78,7 @@ class UserTweetCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
         profileImageView.layer.cornerRadius = 3
     }
 
