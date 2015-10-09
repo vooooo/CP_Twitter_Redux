@@ -44,8 +44,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dummyTableVC.refreshControl = refreshControl
         
         loadTweets()
-
+        
     }
+    
     override func viewWillAppear(animated: Bool) {
         if menuTitle == "Mentions" {
             navigationItem.title = "Mentions"
@@ -101,6 +102,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if value == "TweetReply" {
             composeType = "TweetReply"
             performSegueWithIdentifier("tweetCompose", sender: tweetCell)
+        } else if value == "ProfileTap" {
+            performSegueWithIdentifier("profileView", sender: tweetCell)
         }
         
     }

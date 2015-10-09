@@ -69,14 +69,25 @@ class TweetCell: UITableViewCell {
     }
 
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        profileImageView.layer.cornerRadius = 3
+
+        let singleTap = UITapGestureRecognizer(target: self, action: Selector("onProfileTap"))
+        singleTap.numberOfTapsRequired = 1
+        
+        profileImageView.userInteractionEnabled = true
+        profileImageView.addGestureRecognizer(singleTap)
+    }
+    
+    func onProfileTap() {
+        tweetActionClicked("ProfileTap")
+    }
+
     func tweetActionClicked(action: String) {
         delegate?.tweetCell!(self, tweetAction: action)
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
+    
 
     
     override func setSelected(selected: Bool, animated: Bool) {

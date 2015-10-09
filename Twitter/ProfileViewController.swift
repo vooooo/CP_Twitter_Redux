@@ -8,11 +8,16 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserTweetCellDelegate {
 
+    @IBAction func onNew(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("profileCompose", sender: nil)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]?
     var user: User?
+    var composeType: String?
     var menuTitle: String?
 
     override func viewDidLoad() {
@@ -88,21 +93,53 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCellWithIdentifier("UserTweetCell", forIndexPath: indexPath) as! UserTweetCell
             
             cell.tweet = tweets?[indexPath.row]
-            
+            cell.delegate = self
+
             return cell
 
             
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tweetCell(tweetCell: TweetCell, tweetAction value: String) {
+        
+        if value == "TweetReply" {
+            composeType = "TweetReply"
+            performSegueWithIdentifier("tweetCompose", sender: tweetCell)
+        } else if value == "ProfileTap" {
+            performSegueWithIdentifier("profileView", sender: tweetCell)
+        }
+        
     }
-    */
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        navigationItem.title = nil
+        
+        if segue.identifier == "profileDetail"{
+            let vc = segue.destinationViewController as! TweetDetailViewController
+            vc.navigationItem.title = "Tweet"
+            navigationItem.title = "Back"
+            
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            
+            let tweet: Tweet
+            tweet = tweets![indexPath!.row]
+            
+            vc.tweet = tweet
+            
+        }
+        if segue.identifier == "profileCompose" {
+            let vc = segue.destinationViewController as! TweetComposeViewController
+            vc.navigationItem.title = "Compose"
+            navigationItem.title = "Cancel"
+            
+            if sender != nil {
+                vc.tweet = nil
+            }
+        }
+        
+    }
 
 }

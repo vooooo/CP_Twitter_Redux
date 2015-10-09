@@ -81,6 +81,10 @@
                                                         <constraint firstAttribute="height" constant="155" id="4HC-2R-M64"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view alpha="0.65000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vam-Zz-GUA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ger-I2-VBE" userLabel="Profile Image">
                                                     <rect key="frame" x="136" y="16" width="48" height="48"/>
                                                     <constraints>
@@ -177,10 +181,12 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="vam-Zz-GUA" firstAttribute="leading" secondItem="76z-T1-412" secondAttribute="leading" id="10a-Cj-ABx"/>
                                                 <constraint firstItem="uUw-6C-PEP" firstAttribute="centerX" secondItem="76z-T1-412" secondAttribute="centerX" id="5aZ-a1-Ptm"/>
                                                 <constraint firstItem="Ger-I2-VBE" firstAttribute="top" secondItem="76z-T1-412" secondAttribute="top" constant="16" id="7kp-aL-edx"/>
                                                 <constraint firstItem="IuB-I8-m2h" firstAttribute="top" secondItem="76z-T1-412" secondAttribute="top" id="7y1-Xi-1Br"/>
                                                 <constraint firstItem="hJR-f8-olD" firstAttribute="top" secondItem="IuB-I8-m2h" secondAttribute="bottom" id="EjU-DH-9aE"/>
+                                                <constraint firstAttribute="bottom" secondItem="vam-Zz-GUA" secondAttribute="bottom" constant="5" id="L0S-Yn-UN6"/>
                                                 <constraint firstItem="uUw-6C-PEP" firstAttribute="top" secondItem="QHG-cj-OuJ" secondAttribute="bottom" constant="8" id="NYD-hf-Ma0"/>
                                                 <constraint firstItem="QHG-cj-OuJ" firstAttribute="centerX" secondItem="76z-T1-412" secondAttribute="centerX" id="PhZ-6Y-ARX"/>
                                                 <constraint firstAttribute="trailing" secondItem="IuB-I8-m2h" secondAttribute="trailing" id="QlD-ZG-oed"/>
@@ -188,12 +194,14 @@
                                                 <constraint firstItem="Ger-I2-VBE" firstAttribute="centerX" secondItem="76z-T1-412" secondAttribute="centerX" id="Xtf-Mh-MLq"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uVL-wl-gjs" secondAttribute="bottom" constant="5" id="fTV-vZ-aO3"/>
                                                 <constraint firstItem="uVL-wl-gjs" firstAttribute="top" secondItem="IuB-I8-m2h" secondAttribute="bottom" id="fXG-So-lVf"/>
+                                                <constraint firstItem="vam-Zz-GUA" firstAttribute="top" secondItem="76z-T1-412" secondAttribute="top" id="gfu-vB-8Hd"/>
                                                 <constraint firstItem="Thm-hd-fRa" firstAttribute="width" secondItem="76z-T1-412" secondAttribute="width" multiplier="1/3" id="m6h-CW-I4g"/>
                                                 <constraint firstAttribute="trailing" secondItem="Thm-hd-fRa" secondAttribute="trailing" id="pZ1-GL-aJL"/>
                                                 <constraint firstItem="IuB-I8-m2h" firstAttribute="leading" secondItem="76z-T1-412" secondAttribute="leading" id="qM0-pI-Trh"/>
                                                 <constraint firstItem="QHG-cj-OuJ" firstAttribute="top" secondItem="Ger-I2-VBE" secondAttribute="bottom" constant="8" id="qOM-O8-rY4"/>
                                                 <constraint firstItem="uVL-wl-gjs" firstAttribute="leading" secondItem="76z-T1-412" secondAttribute="leading" id="umD-dz-CqQ"/>
                                                 <constraint firstItem="hJR-f8-olD" firstAttribute="width" secondItem="76z-T1-412" secondAttribute="width" multiplier="1/3" id="x6z-nl-uqJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="vam-Zz-GUA" secondAttribute="trailing" id="yae-ww-yEd"/>
                                                 <constraint firstItem="uVL-wl-gjs" firstAttribute="width" secondItem="76z-T1-412" secondAttribute="width" multiplier="1/3" id="ydM-lj-AM0"/>
                                                 <constraint firstItem="hJR-f8-olD" firstAttribute="centerX" secondItem="76z-T1-412" secondAttribute="centerX" id="zhk-mh-OCd"/>
                                             </constraints>
@@ -208,11 +216,11 @@
                                             <outlet property="screennameLabel" destination="uUw-6C-PEP" id="SSt-92-m4B"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTweetCell" rowHeight="94" id="nq1-8L-8QB" customClass="UserTweetCell" customModule="Twitter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserTweetCell" rowHeight="94" id="nq1-8L-8QB" customClass="UserTweetCell" customModule="Twitter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="319" width="320" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nq1-8L-8QB" id="Njj-As-oFN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVd-oN-6Mb">
@@ -275,7 +283,7 @@
                                                         <action selector="onFavorite:" destination="nq1-8L-8QB" eventType="touchUpInside" id="gun-yp-ru8"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab6-7n-awX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab6-7n-awX">
                                                     <rect key="frame" x="297" y="8" width="15" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.43365293560000001" green="0.43365293560000001" blue="0.43365293560000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -316,6 +324,7 @@
                                             <outlet property="profileImageView" destination="htt-xN-yrL" id="Alc-6t-IIn"/>
                                             <outlet property="screennameLabel" destination="frK-yg-zxr" id="SyO-3O-EVu"/>
                                             <outlet property="tweetLabel" destination="w8A-M5-XMy" id="A9L-YL-on8"/>
+                                            <segue destination="7Pg-TS-WG1" kind="push" identifier="profileDetail" id="KjD-Xw-V0D"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -329,14 +338,22 @@
                             <constraint firstItem="rSj-FO-UML" firstAttribute="leading" secondItem="MIY-Gg-EYs" secondAttribute="leading" id="t80-Cg-3w8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="7mB-NA-a4S"/>
+                    <navigationItem key="navigationItem" title="Profile" id="7mB-NA-a4S">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="Yfx-o0-dL7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onNew:" destination="Len-Xe-P7d" id="Dkh-7o-Kaj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rSj-FO-UML" id="Je0-Uk-7gK"/>
+                        <segue destination="apZ-lU-x4M" kind="push" identifier="profileCompose" id="WsZ-sU-lhS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6It-A3-DLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598" y="1706"/>
+            <point key="canvasLocation" x="534" y="2262"/>
         </scene>
         <!--Home-->
         <scene sceneID="LqZ-8Z-G30">
@@ -354,11 +371,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="99" id="zGb-ak-ghQ" customClass="TweetCell" customModule="Twitter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="99" id="zGb-ak-ghQ" customClass="TweetCell" customModule="Twitter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zGb-ak-ghQ" id="2NL-jP-lxR">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-9m-tpi">
@@ -386,7 +403,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsE-bY-TdC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsE-bY-TdC">
                                                     <rect key="frame" x="297" y="9" width="15" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.43365293560000001" green="0.43365293560000001" blue="0.43365293560000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -457,7 +474,7 @@
                                             <outlet property="profileImageView" destination="D8c-g8-Z4H" id="nzf-Pq-h46"/>
                                             <outlet property="screennameLabel" destination="3wW-bq-zFD" id="bIc-xw-iig"/>
                                             <outlet property="tweetLabel" destination="aZd-Hn-L1B" id="LBd-Fb-CWB"/>
-                                            <segue destination="Len-Xe-P7d" kind="push" identifier="profileView" id="Xmk-Nl-GWO"/>
+                                            <segue destination="7Pg-TS-WG1" kind="push" identifier="tweetDetail" id="elj-vp-t6a"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -490,6 +507,7 @@
                     <connections>
                         <outlet property="tableView" destination="rK7-LF-nPO" id="tTP-JL-p6k"/>
                         <segue destination="apZ-lU-x4M" kind="push" identifier="tweetCompose" id="xiN-pi-Isj"/>
+                        <segue destination="Len-Xe-P7d" kind="push" identifier="profileView" id="hdl-0e-8Uy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJt-Vc-QPk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -576,7 +594,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gln-oQ-RjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605" y="1768"/>
+            <point key="canvasLocation" x="1605" y="2262"/>
         </scene>
         <!--Tweet-->
         <scene sceneID="Bjv-Xc-6zB">
@@ -744,7 +762,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4c-sS-4Lz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605" y="888"/>
+            <point key="canvasLocation" x="1042" y="1888"/>
         </scene>
         <!--Hamburger View Controller-->
         <scene sceneID="662-8G-ywx">
@@ -902,7 +920,8 @@
         <image name="sign-in-with-twitter-gray.png" width="158" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xmk-Nl-GWO"/>
-        <segue reference="xiN-pi-Isj"/>
+        <segue reference="hdl-0e-8Uy"/>
+        <segue reference="KjD-Xw-V0D"/>
+        <segue reference="WsZ-sU-lhS"/>
     </inferredMetricsTieBreakers>
 </document>

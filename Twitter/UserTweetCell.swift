@@ -7,21 +7,20 @@
 //
 
 import UIKit
+@objc protocol UserTweetCellDelegate {
+    optional func userTweetCell(userTweetCell: UserTweetCell, tweetAction value: String)
+}
 
 class UserTweetCell: UITableViewCell {
 
+    weak var delegate: UserTweetCellDelegate?
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    
     @IBOutlet weak var screennameLabel: UILabel!
-    
     @IBOutlet weak var tweetLabel: UILabel!
-    
     @IBOutlet weak var createdAtLabel: UILabel!
-    
-    
     @IBOutlet weak var onRetweetButton: UIButton!
-    
     @IBOutlet weak var onFavoriteButton: UIButton!
     
     @IBAction func onReply(sender: UIButton) {
@@ -29,11 +28,23 @@ class UserTweetCell: UITableViewCell {
     }
     
     @IBAction func onRetweet(sender: UIButton) {
-        print("onRetweet")
+        TwitterClient.sharedInstance.retweetWithId(tweet.tweetId!) { [weak self] (tweets, error) -> () in
+            if error == nil {
+                self!.onRetweetButton.setImage(UIImage(named: "retweet_on.png"), forState: UIControlState.Normal)
+            } else {
+                print("ERROR: \(error)")
+            }
+        }
     }
     
     @IBAction func onFavorite(sender: UIButton) {
-        print("onFav")
+        TwitterClient.sharedInstance.favoritesCreate(tweet.tweetId!) { [weak self] (tweets, error) -> () in
+            if error == nil {
+                self!.onFavoriteButton.setImage(UIImage(named: "favorite_on.png"), forState: UIControlState.Normal)
+            } else {
+                print("ERROR: \(error)")
+            }
+        }
     }
     
     var tweet: Tweet! {
@@ -56,9 +67,13 @@ class UserTweetCell: UITableViewCell {
         }
     }
 
+    func tweetActionClicked(action: String) {
+        delegate?.userTweetCell!(self, tweetAction: action)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        profileImageView.layer.cornerRadius = 3
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
