@@ -35,4 +35,4 @@ Time spent: 16
 
 ### Walkthrough
 
-![Video Walkthrough]()
+![Video Walkthrough](https://raw.githubusercontent.com/vooooo/CP_Twitter_Redux/master/Twitter_redux.gif?raw=true)
