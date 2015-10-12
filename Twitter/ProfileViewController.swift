@@ -12,16 +12,18 @@ let userDidDistortProfileNotification = "userDidDistortProfileNotification"
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserTweetCellDelegate {
 
-    @IBAction func onNew(sender: UIBarButtonItem) {
-        performSegueWithIdentifier("profileCompose", sender: nil)
-    }
-    
-    @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]?
     var user: User?
     var composeType: String?
     var menuTitle: String?
     var refreshControl: UIRefreshControl!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func onNew(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("profileCompose", sender: nil)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +94,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        //
+        // Process section 0 which is profile detail prototype
+        //
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("ProfileHeaderCell", forIndexPath: indexPath) as! ProfileHeaderCell
             
@@ -116,6 +121,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             return cell
 
+        //
+        // only other section which is the user timeline
+        //
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("UserTweetCell", forIndexPath: indexPath) as! UserTweetCell
             
@@ -127,13 +135,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func tweetCell(tweetCell: TweetCell, tweetAction value: String) {
+    func userTweetCell(userTweetCell: UserTweetCell, tweetAction value: String) {
         
         if value == "TweetReply" {
             composeType = "TweetReply"
-            performSegueWithIdentifier("tweetCompose", sender: tweetCell)
+            performSegueWithIdentifier("profileCompose", sender: userTweetCell)
         } else if value == "ProfileTap" {
-            performSegueWithIdentifier("profileView", sender: tweetCell)
+            performSegueWithIdentifier("profileView", sender: userTweetCell)
         }
         
     }

@@ -18,7 +18,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onLogout(sender: AnyObject) {
-//        User.currentUser?.logout()
+        //
+        // Was going to update the logout to just trigger the hamburger menu and have logout there
+        // but with the occasional back button, it was just too inconsistent.  So I left logout in 
+        // both places.
+        //
+        User.currentUser?.logout()
         print("Logout button tapped")
     }
     
@@ -97,6 +102,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
 
+    //
+    // Delegate to handle replies and profile taps
+    //
     func tweetCell(tweetCell: TweetCell, tweetAction value: String) {
         
         if value == "TweetReply" {

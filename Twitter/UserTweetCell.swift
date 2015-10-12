@@ -27,7 +27,7 @@ class UserTweetCell: UITableViewCell {
     @IBOutlet weak var favoriteLabel: UILabel!
     
     @IBAction func onReply(sender: UIButton) {
-        print("onReply")
+        tweetActionClicked("TweetReply")
     }
     
     @IBAction func onRetweet(sender: UIButton) {

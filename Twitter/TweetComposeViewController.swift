@@ -18,6 +18,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var charCountLabel: UILabel!
     @IBOutlet weak var tweetTextView: UITextView!
     
+    
     @IBAction func doTweet(sender: UIBarButtonItem) {
         let status = tweetTextView.text as String
         print("Submitting Tweet: \(status)")
@@ -37,6 +38,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
         }
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tweetTextView.delegate = self
@@ -70,16 +72,6 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

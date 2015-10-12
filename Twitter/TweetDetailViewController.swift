@@ -12,7 +12,6 @@ class TweetDetailViewController: UIViewController {
 
     var tweet: Tweet!
     var composeType: String?
-    
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screennameLabel: UILabel!
@@ -28,10 +27,12 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
     
+    
     @IBAction func doReply(sender: AnyObject) {
         composeType = "TweetReply"
         performSegueWithIdentifier("tweetCompose", sender: tweet)
     }
+    
     @IBAction func doRetweet(sender: AnyObject) {
         TwitterClient.sharedInstance.retweetWithId(tweet.tweetId!) { [weak self] (tweets, error) -> () in
             if error == nil {
@@ -96,8 +97,6 @@ class TweetDetailViewController: UIViewController {
             navigationItem.title = "Cancel"
             
             if sender != nil {
-//                let cell = sender as! UITableViewController
-                
                 let tweet: Tweet
                 tweet = self.tweet
                 

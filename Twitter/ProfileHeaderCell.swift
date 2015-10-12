@@ -44,12 +44,16 @@ class ProfileHeaderCell: UITableViewCell {
         if coverImageView.image != nil {
             dispatch_async(dispatch_get_main_queue()) {
                 
-                //USING CORE GRAPHICS to scale images
+                //
+                // USING CORE GRAPHICS to scale images
+                //
                 self.coverImageView.transform = CGAffineTransformMakeScale(2, 2)
                 self.coverOpacityView.layer.opacity = self.coverOpacityView.layer.opacity - 0.5
                 UIGraphicsEndImageContext()
 
-                //USING CORE IMAGE to Blur
+                //
+                //  USING CORE IMAGE to Blur
+                //  This is really slow in the simulator, but I tested it on the phone and it's fast there.
                 //
                 let context = CIContext(options: nil)
                 let currentFilter = CIFilter(name: "CIGaussianBlur")

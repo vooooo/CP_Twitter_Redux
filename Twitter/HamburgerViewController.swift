@@ -46,12 +46,20 @@ class HamburgerViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        // Notify to close menu if device is rotated.
+        //
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
 
-        // Do any additional setup after loading the view.
     }
+    
+    //
+    // Weird scenarios when the menu is open and the device is rotated.  Decided to just close the menu
+    // if the device is rotated.
+    //
     func rotated() {
         UIView.animateWithDuration(0.3, animations: {
             self.leftMarginConstraint.constant = 0
@@ -59,12 +67,16 @@ class HamburgerViewController: UIViewController {
         })
 
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
 
+    //
+    // Gesture to open and close hamburger menu
+    //
     @IBAction func onPanGesture(sender: UIPanGestureRecognizer) {
         let translation = sender.translationInView(view)
         let velocity = sender.velocityInView(view)
@@ -89,15 +101,5 @@ class HamburgerViewController: UIViewController {
         }
 
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
